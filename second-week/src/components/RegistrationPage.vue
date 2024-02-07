@@ -32,10 +32,9 @@ export default {
     };
   },
   methods: {
-    // Метод для отправки данных формы на сервер
     async registerUser() {
       try {
-        const response = await fetch('https://example.com/api/register', {
+        const response = await fetch('http://localhost:8080/api/register', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -49,10 +48,6 @@ export default {
 
         if (response.ok) {
           console.log('Пользователь успешно зарегистрирован');
-          // Очищаем поля формы после успешной регистрации
-          this.username = '';
-          this.email = '';
-          this.password = '';
         } else {
           console.error('Ошибка при регистрации пользователя:', response.status);
           const responseData = await response.json();
